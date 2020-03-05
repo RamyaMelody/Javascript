@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+ <title>Guvi</title>
+<!--<script src="cricket_page2.js"></script>-->
+</head>
+<body>
+    <h3 align="center"style="color:magenta"> CRICKET GAME </h3>
+    <table align="center">
+        <tr>
+        <td><label style="color:orangered">Team A</label></td>
+        <td><label style="color:orangered">Team B</label></td>
+        </tr>
+        <tr>
+        <td><label>Score:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <label id="score1"></label></td>
+        <td><label>Score:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <label id="score2"></label></td>
+        </tr>
+        <!--<tr>
+        <td><label>Wickets:</label>
+        <label id="wicket1"></label></td>
+        <td><label>Wickets:</label>
+        <label id="wicket2"></label></td>
+        </tr>
+        -->       
+</table> 
+    <p align="center"id="team1" style="color:blue;font-family:fantasy;font-size:20px"></p>
+    
+        
+<script>
+    text = localStorage.getItem("testJSON");
+    obj = JSON.parse(text);
+    document.getElementById("score1").innerHTML = obj.Team_A_Score;
+    document.getElementById("score2").innerHTML = obj.Team_B_Score;
+    
+    
+    /*document.getElementById("wicket1").innerHTML = obj.Wickets_A;
+    document.getElementById("wicket2").innerHTML = obj.Wickets_B;
+    */
+    if(parseInt(obj.Team_A_Score)>parseInt(obj.Team_B_Score)){
+        document.getElementById("team1").innerHTML = "Team A WON!"
+    }
+    else if(obj.Team_A_Score == obj.Team_B_Score){
+        document.getElementById("team1").innerHTML = "Match is Tied"
+    
+    }
+    else {
+        document.getElementById("team1").innerHTML = "Team B Won!"
+    
+    }
+
+
+</script>   
+</body>
+</html>

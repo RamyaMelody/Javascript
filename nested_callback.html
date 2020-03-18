@@ -2,23 +2,10 @@
 <html>
 <head>
 <title>callback</title>
-    <script>
-        function printNumbers(from, to) {
-            let current = from;
-            setTimeout(function go() {
-                 document.write(current,"<br>");
-                if (current > to) {
-                    setTimeout(go, 1000);
-                }
-                current--;
-            }, 1000);
-        }
-  
-        printNumbers(10, 0);
-    </script>
+<script src="nested_callback.js"></script>
 </head>
 <body>
-    <input type="button" value="count" onclick="printNumbers();"/>
+<div id="count">Countdown Starts!</div>
 
 </body>
 </html>

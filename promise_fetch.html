@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Promise_chaining</title>
+<!--<script src=""></script>-->
+<script>
+ function getCountry(country) {
+    var promise = new Promise(function(resolve, reject){
+        let url = "http://restcountries.eu/rest/v2/name/Afghan";
+        let fdata = fetch(url)
+        .then((fdata)=>{
+            if(fdata.status == 200){
+                resolve(fdata);
+            }else{
+                reject("Couldnt fetch Country data");
+            }
+        })  
+    });
+    return promise;
+ };
+
+ function getWeather(cityCapital) {
+    var promise = new Promise(function(resolve, reject){
+        let url = "http://api.openweathermap.org/data/2.5/weather?q="+cityCapital+"&appid=4b8257af63d0f5bda3a3f065cac5a035";
+        let fdata = fetch(url)
+        .then((fdata)=>{
+            if(fdata.status == 200){
+                resolve(fdata);
+            }else{
+                reject("Couldnt fetch Weather data");
+            }
+        })    
+    });
+    return promise;
+ };
+
+ getCountry().then((result)=>{
+    return result.json();
+ })
+.then(result=>{
+    var flag=result[0].flag;
+    document.getElementById("flag").src=flag;
+    document.getElementById("flag").style.width="10%";
+     document.getElementById("country").innerHTML=result[0].name;
+    return getWeather(result[0].capital);
+})
+.then(weatherData=>{
+     //console.log(weatherData.json());
+    return weatherData.json();
+    
+})
+.then(function(wfdata){
+    var temp=Number(JSON.stringify(wfdata.main.temp))
+    var humidity=Number(JSON.stringify(wfdata.main.humidity))
+    document.getElementById("weather").innerHTML+= "Temperature: " + temp + "C" + "<br>"
+    document.getElementById("weather").innerHTML+= "Humidity: " + humidity + "" 
+        })    
+.catch(err=>{
+     console.log(err)
+ })
+
+    
+        </script>
+    </head>
+
+    <body>
+<div>
+     <p id="country" ></p>
+    <p id="weather" ></p>
+    <img id="flag">
+</div>
+    </body>
+</html>

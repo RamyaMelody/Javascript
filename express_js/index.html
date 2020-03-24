@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Guvi</title>
+    <style>
+        .cont {
+            background-color: #a7dff0;
+            padding: 9px;
+        }
+
+        img {
+            margin-left: 358px;
+            transform: rotate(-35deg);
+        }
+
+        .signupbtn {
+            background-color: #4967e6;
+            color: white;
+            padding: 14px 6px;
+            margin: 0px 0px 15px 272px;
+            border: none;
+            cursor: pointer;
+            width: 33%;
+            border-radius: 6px;
+        }
+
+        h2 {
+            text-align: center
+        }
+
+        .name {
+            width: 30%;
+            padding: 11px 9px;
+            margin: 0px 0px 15px 272px;
+            border-radius: 4px;
+            border: 1px;
+        }
+
+        form {
+            padding: 279px;
+            margin: -224px 0px 0px 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="http://localhost:3000/users" method="POST">
+        <div class="cont">
+            <img src="gmail_icon.png">
+            <h2>Sign Up Form</h2>
+            <input type="text" class="name" placeholder="First Name" name="firstname"><br>
+            <input type="text" class="name" placeholder="Last Name" name="lastname"><br>
+            <input type="email" class="name" placeholder="Email" name="email"><br>
+            <input type="number" class="name" placeholder="Contact Number" name="contact"><br>
+            <input type="text" class="name" placeholder="Address" name="addr"><br>
+
+
+
+            <div>
+
+                <input type="submit" value="Submit" class="signupbtn">
+            </div>
+        </div>
+    </form>
+
+</body>
+
+</html>

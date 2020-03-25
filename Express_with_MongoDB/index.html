@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Guvi</title>
+    <style>
+        .cont {
+            background-color: #a7dff0;
+            padding: 9px;
+        }
+
+
+        .signupbtn {
+            background-color: #4967e6;
+            color: white;
+            padding: 14px 6px;
+            margin: 0px 0px 15px 272px;
+            border: none;
+            cursor: pointer;
+            width: 33%;
+            border-radius: 6px;
+        }
+
+        .updatebtn {
+            background-color: #38e03d;
+            color: white;
+            padding: 14px 6px;
+            margin: 0px 0px 15px 272px;
+            border: none;
+            cursor: pointer;
+            width: 16%;
+            border-radius: 6px;
+        }
+
+        .deletebtn {
+            background-color: #e02323;
+            color: white;
+            padding: 14px 6px;
+            margin: 0px 0px 15px 12px;
+            border: none;
+            cursor: pointer;
+            width: 15%;
+            border-radius: 6px;
+        }
+
+        h2 {
+            text-align: center;
+            color: brown
+        }
+
+        .name {
+            width: 30%;
+            padding: 11px 9px;
+            margin: 0px 0px 15px 272px;
+            border-radius: 4px;
+            border: 1px;
+        }
+
+        form {
+            padding: 279px;
+            margin: -224px 0px 0px 0px;
+        }
+    </style>
+    <script>
+        function sendData() {
+            var data = {
+                firstname: document.getElementById("fname").value,
+                lastname: document.getElementById("lname").value,
+                email: document.getElementById("email").value,
+                contact: document.getElementById("contact").value,
+                address: document.getElementById("addr").value
+
+            };
+            fetch("http://localhost:3000/users", {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }).then(function (data) {
+                console.log(data)
+            })
+        }
+
+        function updateData() {
+            var data ={firstname: document.getElementById("fname").value};
+            fetch("http://localhost:3000/users", {
+                method: 'put',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).then(function (data) {
+                console.log(data)
+            })
+        }
+
+        function deleteData() {
+            var data ={firstname: document.getElementById("fname").value};
+            fetch("http://localhost:3000/users", {
+                method: 'delete',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).then(function (data) {
+                console.log(data)
+            })
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <form>
+        <div class="cont">
+
+            <h2>My Form</h2>
+            <input type="text" class="name" id="fname" placeholder="First Name" name="firstname"><br>
+            <input type="text" class="name" id="lname" placeholder="Last Name" name="lastname"><br>
+            <input type="email" class="name" id="email" placeholder="Email" name="email"><br>
+            <input type="number" class="name" id="contact" placeholder="Contact Number" name="contact"><br>
+            <input type="text" class="name" id="addr" placeholder="Address" name="addr"><br>
+
+
+
+            <div>
+
+                <input type="submit" value="Submit" class="signupbtn" onclick="sendData();return false;">
+                <input type="submit" id="update" value="Update" class="updatebtn" onclick="updateData();return false;">
+                <input type="submit" id="delete" value="Delete" class="deletebtn" onclick="deleteData();return false;">
+            </div>
+        </div>
+    </form>
+
+</body>
+
+</html>

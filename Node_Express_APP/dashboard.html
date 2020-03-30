@@ -183,14 +183,14 @@
                     var edit_icon = document.createElement("h5");
                     cell2.style.width = "100px"
                     edit_icon.setAttribute("class", "sourceText");
-                    edit_icon.innerHTML = '<i class="fa fa-edit" style="font-size:26px" aria-hidden="true"></i>';
+                    edit_icon.innerHTML = '<i class="fa fa-edit" style="font-size:26px;cursor:pointer" aria-hidden="true"></i>';
                     cell2.appendChild(edit_icon);
 
                     var cell3 = row.insertCell(3);
                     var del_icon = document.createElement("h5");
                     cell3.style.width = "100px"
                     del_icon.setAttribute("class", "sourceText");
-                    del_icon.innerHTML = '<i class="fa fa-trash" style="font-size:26px"aria-hidden="true"></i>';
+                    del_icon.innerHTML = '<i class="fa fa-trash" style="font-size:26px;cursor:pointer"aria-hidden="true"></i>';
                     del_icon.id = "icon" + i;
                     cell3.appendChild(del_icon);
                     (function (i) {
